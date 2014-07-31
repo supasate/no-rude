@@ -7,7 +7,7 @@ $(document).ready(function() {
 		    type: 'POST',
 		    cache: false,
 		    async: false,
-		    url: 'http://localhost/no_rude/api.php',
+		    url: 'api.php',
 		    data: { 
 		        'intext': text, 
 		    },
