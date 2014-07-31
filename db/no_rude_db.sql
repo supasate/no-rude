@@ -39,7 +39,7 @@ INSERT INTO `rude_word` (`rude`, `polite`) VALUES
 ('idiot', 'lovely'),
 ('ugly', 'cute'),
 ('damn', 'great'),
-('sily', 'sweet');
+('silly', 'sweet');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
