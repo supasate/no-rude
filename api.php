@@ -1,9 +1,34 @@
 <?php
+$username = "80hours";
+$password = "4800minutes";
+$hostname = "localhost"; 
 
+//connection to the database
+$dbhandle = mysql_connect($hostname, $username, $password) 
+ or die("Unable to connect to MySQL");
+
+//select a database to work with
+$selected = mysql_select_db("no_rude_db",$dbhandle) 
+  or die("Could not select examples");
+
+//execute the SQL query and return records
+$result = mysql_query("SELECT * FROM rude_word");
+
+//get original text
 $text = $_POST['intext'];
 
-$bad = array("idiot", "ugly", "damn", "sily", "ไอ้อ้วน", "ทุเรศ", "ไอ้ขี้เกียจ", "เกลียด");
-$good = array("lovely", "cute", "great", "sweet", "หุ่นดี", "สวย", "ขยัน", "รัก");
+$rude = array();
+$polite = array();
 
-$replaced_text = str_replace($bad, $good, $text);
+//fetch tha dictionary from the database 
+while ($row = mysql_fetch_array($result)) {
+	$rude[] = $row['rude'];
+	$polite[] = $row['polite'];
+}
+
+$replaced_text = str_replace($rude, $polite, $text);
 echo $replaced_text;
+
+//close the connection
+mysql_close($dbhandle);
+?>
